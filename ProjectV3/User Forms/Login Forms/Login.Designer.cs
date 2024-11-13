@@ -67,6 +67,7 @@
             QuitButton.TabIndex = 4;
             QuitButton.Text = "Quit";
             QuitButton.UseVisualStyleBackColor = false;
+            QuitButton.Click += QuitButton_Click_1;
             // 
             // StudentLoginTextBox
             // 

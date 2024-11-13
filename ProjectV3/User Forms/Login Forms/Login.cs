@@ -49,37 +49,63 @@ namespace MajorProject
             // Retrieve and hash the entered password
             string enteredPasswordHash = HashPassword(StudentLoginPassword.Text);
 
-            // Connect to the database
-            using (SqlConnection dbconn = new SqlConnection(Database.connection))
+            string filePath = "Students.txt";
+
+            // Check if file exists
+            if (!File.Exists(filePath))
             {
-                dbconn.Open();
+                // Create a new file if it doesn't exist
+                File.Create(filePath).Close();
+            }
 
-                // SQL query to check if the username and hashed password exist
-                string SQLCheck = "SELECT COUNT(*) FROM TBLUsers WHERE UserName = @UN AND PasswordHash = @PW";
-                using (SqlCommand command = new SqlCommand(SQLCheck, dbconn))
+            // Initialize a dictionary to store the students (username as key, hashed password as value)
+            Dictionary<string, string> Students = new Dictionary<string, string>();
+
+            // Read the existing data from the file
+            using (StreamReader FRead = new StreamReader(filePath))
+            {
+                while (!FRead.EndOfStream)
                 {
-                    // Add parameters to prevent SQL injection
-                    command.Parameters.AddWithValue("@UN", StudentLoginTextBox.Text);
-                    command.Parameters.AddWithValue("@PW", enteredPasswordHash);
-
-                    // Execute the query and get the count result
-                    int count = (int)command.ExecuteScalar();
-
-                    // Check if a matching record was found
-                    if (count == 1)
-                    {
-                        this.Hide();
-                        Forms.MainWindow.Show();
-                    }
-                    else
-                    {
-                        // Show an error message if login fails
-                        MessageBox.Show("This user doesn't exist.");
-                        StudentLoginPassword.Clear(); // Clear the password field for security
-                    }
+                    string Users = FRead.ReadLine();
+                    string[] UserSplit = Users.Split(",");
+                    string UserName = UserSplit[0];
+                    string Password = UserSplit[1];
+                    Students.Add(UserName, Password);
                 }
             }
+
+            // Check if the username exists in the dictionary
+            if (Students.ContainsKey(StudentLoginTextBox.Text))
+            {
+                // Username exists, now check if the password matches
+                string storedPasswordHash = Students[StudentLoginTextBox.Text];
+
+                if (storedPasswordHash == enteredPasswordHash)
+                {
+                    // Password matches, allow login
+                    MessageBox.Show("Login Successful!");
+                    this.Hide();
+                    Forms.MainWindow.Show();
+                }
+                else
+                {
+                    // Password does not match
+                    MessageBox.Show("Incorrect password! Please try again.");
+                    StudentLoginPassword.Clear(); // Clear the password field for the user to try again
+                    StudentLoginPassword.Focus(); // Focus the password field again
+                }
+            }
+            else
+            {
+                // Username does not exist
+                MessageBox.Show("Username not found! Please try again.");
+                StudentLoginTextBox.Clear(); // Clear the username field for the user to try again
+                StudentLoginTextBox.Focus(); // Focus the username field again
+            }
+            StudentLoginPassword.ResetText();
         }
+
+
 
         private string HashPassword(string password)
         {
@@ -97,6 +123,11 @@ namespace MajorProject
         private void StudentLoginTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void QuitButton_Click_1(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -42,36 +42,53 @@ namespace ProjectV3
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            if (!File.Exists("Students.txt"))
+            string filePath = "Students.txt";
+
+            // Check if file exists
+            if (!File.Exists(filePath))
             {
-                File.Create("Students.txt");
+                // Create a new file if it doesn't exist
+                File.Create(filePath).Close();
             }
 
-            //instantiate file reading and writing
-            StreamWriter FWrite = new StreamWriter("Students.txt");
-            StreamReader FRead = new StreamReader("Students.txt");
-
-            //List of Studnets
+            // Initialize a dictionary to store the students
             Dictionary<string, string> Students = new Dictionary<string, string>();
-            //Puts Students into list
-            while(!FRead.EndOfStream)
-            {
 
-                string Users = FRead.ReadLine();
-                string[] UserSplit = Users.Split(",");
-                string UserName = UserSplit[0];
-                string Password = UserSplit[1];
-                Students.Add(UserName, HashPassword(Password));
+            // Read the existing data from the file
+            using (StreamReader FRead = new StreamReader(filePath))
+            {
+                while (!FRead.EndOfStream)
+                {
+                    string Users = FRead.ReadLine();
+                    string[] UserSplit = Users.Split(",");
+                    string UserName = UserSplit[0];
+                    string Password = UserSplit[1];
+                    Students.Add(UserName, Password);
+                }
             }
-            FRead.Close();
-            //Selects Database to go thought usernames
+
+            // Check if the username already exists
             if (Students.ContainsKey(StudentUserName.Text))
             {
                 MessageBox.Show("This UserName Already Exists");
             }
+            else
+            {
+                // Hash the password
+                string password = HashPassword(Password.Text);
+
+                // Append the new student data to the file
+                using (StreamWriter FWrite = new StreamWriter(filePath, append: true))
+                {
+                    FWrite.WriteLine($"{StudentUserName.Text},{password}");
+                }
+            }
+            Password.ResetText();
+            // Hide the current form and show the main window
             this.Hide();
             Forms.MainWindow.Show();
         }
+
         private string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
