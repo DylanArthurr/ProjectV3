@@ -21,6 +21,7 @@ namespace MajorProject
             Forms.StudentRegisterForm = new StudentRegister();
             Forms.Frontpage = new FrontPage();
             Forms.TeacherLogin = new TeacherLoginPage();
+            Forms.TeacherReg = new ProjectV3.User_Forms.Login_Forms.TeacherRegister();
             Application.Run(new FrontPage());
         }
     }

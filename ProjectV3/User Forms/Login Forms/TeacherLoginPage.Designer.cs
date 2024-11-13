@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             Label LoginMessage;
-            TextBox TeacherUserName;
-            TextBox TeacherPassword;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherLoginPage));
-            LoginButton = new Button();
             QuitButton = new Button();
+            LoginButton = new Button();
+            TeacherPassw = new TextBox();
+            TeacherNamee = new TextBox();
             LoginMessage = new Label();
-            TeacherUserName = new TextBox();
-            TeacherPassword = new TextBox();
             SuspendLayout();
             // 
             // LoginMessage
@@ -49,27 +47,16 @@
             LoginMessage.TabIndex = 1;
             LoginMessage.Text = "Teacher Login Page";
             // 
-            // TeacherUserName
+            // QuitButton
             // 
-            TeacherUserName.BackColor = Color.FromArgb(242, 226, 203);
-            TeacherUserName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TeacherUserName.Location = new Point(296, 202);
-            TeacherUserName.Margin = new Padding(0);
-            TeacherUserName.Name = "TeacherUserName";
-            TeacherUserName.Size = new Size(209, 35);
-            TeacherUserName.TabIndex = 3;
-            TeacherUserName.Text = "UserName";
-            TeacherUserName.TextChanged += TeacherUserName_TextChanged;
-            // 
-            // TeacherPassword
-            // 
-            TeacherPassword.BackColor = Color.FromArgb(242, 226, 203);
-            TeacherPassword.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TeacherPassword.Location = new Point(296, 262);
-            TeacherPassword.Name = "TeacherPassword";
-            TeacherPassword.Size = new Size(209, 35);
-            TeacherPassword.TabIndex = 4;
-            TeacherPassword.Text = "Password";
+            QuitButton.BackColor = Color.FromArgb(242, 226, 203);
+            QuitButton.Location = new Point(371, 343);
+            QuitButton.Name = "QuitButton";
+            QuitButton.Size = new Size(73, 21);
+            QuitButton.TabIndex = 6;
+            QuitButton.Text = "Quit";
+            QuitButton.UseVisualStyleBackColor = false;
+            QuitButton.Click += QuitButton_Click;
             // 
             // LoginButton
             // 
@@ -82,16 +69,24 @@
             LoginButton.UseVisualStyleBackColor = false;
             LoginButton.Click += LoginButton_Click;
             // 
-            // QuitButton
+            // TeacherPassw
             // 
-            QuitButton.BackColor = Color.FromArgb(242, 226, 203);
-            QuitButton.Location = new Point(371, 343);
-            QuitButton.Name = "QuitButton";
-            QuitButton.Size = new Size(73, 21);
-            QuitButton.TabIndex = 6;
-            QuitButton.Text = "Quit";
-            QuitButton.UseVisualStyleBackColor = false;
-            QuitButton.Click += QuitButton_Click;
+            TeacherPassw.BackColor = Color.FromArgb(242, 226, 203);
+            TeacherPassw.Font = new Font("Segoe UI", 18F);
+            TeacherPassw.Location = new Point(293, 257);
+            TeacherPassw.Name = "TeacherPassw";
+            TeacherPassw.Size = new Size(212, 39);
+            TeacherPassw.TabIndex = 8;
+            // 
+            // TeacherNamee
+            // 
+            TeacherNamee.BackColor = Color.FromArgb(242, 226, 203);
+            TeacherNamee.Font = new Font("Segoe UI", 18F);
+            TeacherNamee.Location = new Point(293, 212);
+            TeacherNamee.Name = "TeacherNamee";
+            TeacherNamee.Size = new Size(212, 39);
+            TeacherNamee.TabIndex = 7;
+            TeacherNamee.TextChanged += TeacherName_TextChanged;
             // 
             // TeacherLoginPage
             // 
@@ -100,20 +95,23 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(TeacherPassw);
+            Controls.Add(TeacherNamee);
             Controls.Add(QuitButton);
             Controls.Add(LoginButton);
-            Controls.Add(TeacherPassword);
-            Controls.Add(TeacherUserName);
             Controls.Add(LoginMessage);
             Name = "TeacherLoginPage";
             Text = "TeacherLoginPage";
+            Load += TeacherLoginPage_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button LoginButton;
         private Button QuitButton;
+        private Button LoginButton;
+        private TextBox TeacherPassw;
+        private TextBox TeacherNamee;
     }
 }

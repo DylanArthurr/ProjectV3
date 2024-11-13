@@ -32,9 +32,9 @@ namespace ProjectV3
         private void LoginButton_Click(object sender, EventArgs e)
         {
             // Retrieve and hash the entered password
-            string enteredPasswordHash = HashPassword(TeacherPassword.Text);
+            string enteredPasswordHash = HashPassword(TeacherPassw.Text);
 
-            string filePath = "Students.txt";
+            string filePath = "Teachers.txt";
 
             // Check if file exists
             if (!File.Exists(filePath))
@@ -60,10 +60,10 @@ namespace ProjectV3
             }
 
             // Check if the username exists in the dictionary
-            if (Students.ContainsKey(TeacherUserName.Text))
+            if (Students.ContainsKey(TeacherNamee.Text))
             {
                 // Username exists, now check if the password matches
-                string storedPasswordHash = Students[TeacherUserName.Text];
+                string storedPasswordHash = Students[TeacherNamee.Text];
 
                 if (storedPasswordHash == enteredPasswordHash)
                 {
@@ -76,18 +76,18 @@ namespace ProjectV3
                 {
                     // Password does not match
                     MessageBox.Show("Incorrect password! Please try again.");
-                    TeacherPassword.Clear(); // Clear the password field for the user to try again
-                    TeacherPassword.Focus(); // Focus the password field again
+                    TeacherPassw.Clear(); // Clear the password field for the user to try again
+                    TeacherPassw.Focus(); // Focus the password field again
                 }
             }
             else
             {
                 // Username does not exist
                 MessageBox.Show("Username not found! Please try again.");
-                TeacherUserName.Clear(); // Clear the username field for the user to try again
-                TeacherUserName.Focus(); // Focus the username field again
+                TeacherNamee.Clear(); // Clear the username field for the user to try again
+                TeacherNamee.Focus(); // Focus the username field again
             }
-            TeacherUserName.ResetText();
+            TeacherNamee.ResetText();
         }
         private string HashPassword(string password)
         {
@@ -104,6 +104,16 @@ namespace ProjectV3
         }
 
         private void TeacherUserName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TeacherLoginPage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TeacherName_TextChanged(object sender, EventArgs e)
         {
 
         }

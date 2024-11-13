@@ -120,17 +120,11 @@
   <metadata name="LoginMessage.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="TeacherUserName.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="TeacherPassword.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABIAAAAOACAIAAADNbZ+DAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAA/7JJREFUeF7s/fV3XEnS7wufP+f+8sK955z7nIdmpqenp7un0e2229RmZmZmZlmy
+        vAAADrwBlbxySQAA/7JJREFUeF7s/fV3XEnS7wufP+f+8sK955z7nIdmpqenp7un0e2229RmZmZmZlmy
         JIsZSyxZlmRhkciMAluW7J7n3PdveL8RkTsrKwtUArPW+qxauXNHUmQkxKb6b6+6Soa7SzXWoYBIjXXq
         nTHSFR5LTGOJaSyxKQSzi8fEiL9kuJOw4jVyNkBwudIprztLbbEAxQbWqQBWobFj1WeysEr5eLHapdED
         KgpaeMhIaGElGTdWthqrOe8Fq0rvBUtdGktMYzVh0rGKC4tVVeF1twsYMSXCcHcY9FkDnfDjpMclKC3x

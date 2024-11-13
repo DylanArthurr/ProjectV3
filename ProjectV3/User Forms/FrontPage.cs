@@ -42,7 +42,8 @@ namespace ProjectV3
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Forms.TeacherReg.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
