@@ -5,11 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using Microsoft.Data.SqlClient;
 using MajorProject;
+using System.IO;
+using static System.Windows.Forms.LinkLabel;
+using System.Collections;
+using Microsoft.Identity.Client;
+
 
 namespace ProjectV3
 {
@@ -37,39 +42,35 @@ namespace ProjectV3
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            //Connect to database
-            SqlConnection dbconn = new SqlConnection(Database.connection);
-            //Opens Connection
-            dbconn.Open();
+            if (!File.Exists("Students.txt"))
+            {
+                File.Create("Students.txt");
+            }
+
+            //instantiate file reading and writing
+            StreamWriter FWrite = new StreamWriter("Students.txt");
+            StreamReader FRead = new StreamReader("Students.txt");
+
+            //List of Studnets
+            Dictionary<string, string> Students = new Dictionary<string, string>();
+            //Puts Students into list
+            while(!FRead.EndOfStream)
+            {
+
+                string Users = FRead.ReadLine();
+                string[] UserSplit = Users.Split(",");
+                string UserName = UserSplit[0];
+                string Password = UserSplit[1];
+                Students.Add(UserName, HashPassword(Password));
+            }
+            FRead.Close();
             //Selects Database to go thought usernames
-            string SQLCheck = "SELECT * FROM TBLUsers WHERE UserName = @UN";
-            SqlDataAdapter da = new SqlDataAdapter(SQLCheck, dbconn);
-            //Adds usernames found to SQLDataTable
-            da.SelectCommand.Parameters.AddWithValue("@UN", StudentUserName.Text);
-            DataTable results = new DataTable();
-            //Fills datatable with usernames
-            da.Fill(results);
-            //if the username isnt in the datatable
-            if (results.Rows.Count == 0)
+            if (Students.ContainsKey(StudentUserName.Text))
             {
-                // Adds username and password eneterd to database
-                string SQLInsert = "INSERT INTO TBLUsers (UserName,PasswordHash,Teacher) VALUES (@UN, @PW, 0)";
-                SqlCommand AddStud = new SqlCommand(SQLInsert, dbconn);
-                AddStud.Parameters.AddWithValue("@UN", StudentUserName.Text);
-                AddStud.Parameters.AddWithValue("@PW", HashPassword(Password.Text));
-                AddStud.ExecuteNonQuery();
-                this.Hide();
-                Forms.MainWindow.Show();
+                MessageBox.Show("This UserName Already Exists");
             }
-            else
-            {
-                //Prints Error Message
-                MessageBox.Show("This user already exists");
-            }
-            //closes connection
-            dbconn.Close();
-
-
+            this.Hide();
+            Forms.MainWindow.Show();
         }
         private string HashPassword(string password)
         {
