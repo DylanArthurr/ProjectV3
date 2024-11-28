@@ -34,6 +34,7 @@
             LoginBttn = new Button();
             QuitButton = new Button();
             TeacherNa = new TextBox();
+            mainMenu = new Button();
             LoginMessage = new Label();
             SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             // QuitButton
             // 
             QuitButton.BackColor = Color.FromArgb(242, 226, 203);
-            QuitButton.Location = new Point(363, 325);
+            QuitButton.Location = new Point(363, 352);
             QuitButton.Name = "QuitButton";
             QuitButton.Size = new Size(73, 21);
             QuitButton.TabIndex = 11;
@@ -88,12 +89,24 @@
             TeacherNa.Size = new Size(212, 39);
             TeacherNa.TabIndex = 12;
             // 
+            // mainMenu
+            // 
+            mainMenu.BackColor = Color.FromArgb(242, 226, 203);
+            mainMenu.Location = new Point(349, 325);
+            mainMenu.Name = "mainMenu";
+            mainMenu.Size = new Size(104, 21);
+            mainMenu.TabIndex = 13;
+            mainMenu.Text = "Main  Menu";
+            mainMenu.UseVisualStyleBackColor = false;
+            mainMenu.Click += mainMenu_Click;
+            // 
             // TeacherRegister
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 450);
+            Controls.Add(mainMenu);
             Controls.Add(TeacherNa);
             Controls.Add(QuitButton);
             Controls.Add(LoginBttn);
@@ -111,5 +124,6 @@
         private Button QuitButton;
         private TextBox TeacherPassw;
         private TextBox TeacherNa;
+        private Button mainMenu;
     }
 }

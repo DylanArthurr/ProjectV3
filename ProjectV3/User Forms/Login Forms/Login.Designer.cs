@@ -34,6 +34,7 @@
             QuitButton = new Button();
             StudentLoginTextBox = new TextBox();
             StudentLoginPassword = new TextBox();
+            mainMenu = new Button();
             LoginMessage = new Label();
             SuspendLayout();
             // 
@@ -50,9 +51,9 @@
             // LoginButton
             // 
             LoginButton.BackColor = Color.FromArgb(242, 226, 203);
-            LoginButton.Location = new Point(296, 331);
+            LoginButton.Location = new Point(277, 318);
             LoginButton.Name = "LoginButton";
-            LoginButton.Size = new Size(107, 23);
+            LoginButton.Size = new Size(139, 23);
             LoginButton.TabIndex = 3;
             LoginButton.Text = "Login";
             LoginButton.UseVisualStyleBackColor = false;
@@ -61,7 +62,7 @@
             // QuitButton
             // 
             QuitButton.BackColor = Color.FromArgb(242, 226, 203);
-            QuitButton.Location = new Point(315, 360);
+            QuitButton.Location = new Point(316, 374);
             QuitButton.Name = "QuitButton";
             QuitButton.Size = new Size(73, 21);
             QuitButton.TabIndex = 4;
@@ -91,6 +92,17 @@
             StudentLoginPassword.Text = "Password";
             StudentLoginPassword.TextChanged += StudentLoginPassword_TextChanged;
             // 
+            // mainMenu
+            // 
+            mainMenu.BackColor = Color.FromArgb(242, 226, 203);
+            mainMenu.Location = new Point(296, 347);
+            mainMenu.Name = "mainMenu";
+            mainMenu.Size = new Size(104, 21);
+            mainMenu.TabIndex = 16;
+            mainMenu.Text = "Main  Menu";
+            mainMenu.UseVisualStyleBackColor = false;
+            mainMenu.Click += mainMenu_Click;
+            // 
             // StudnetLoginPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -98,6 +110,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(698, 450);
+            Controls.Add(mainMenu);
             Controls.Add(StudentLoginPassword);
             Controls.Add(StudentLoginTextBox);
             Controls.Add(QuitButton);
@@ -115,5 +128,6 @@
         private Button QuitButton;
         private TextBox StudentLoginTextBox;
         private TextBox StudentLoginPassword;
+        private Button mainMenu;
     }
 }

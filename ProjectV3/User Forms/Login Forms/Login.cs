@@ -129,5 +129,12 @@ namespace MajorProject
         {
             Environment.Exit(0);
         }
+
+        private void mainMenu_Click(object sender, EventArgs e)
+        {
+            StudentLoginPassword.ResetText();
+            this.Hide();
+            Forms.Frontpage.Show();
+        }
     }
 }

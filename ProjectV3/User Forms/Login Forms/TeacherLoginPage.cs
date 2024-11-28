@@ -117,5 +117,12 @@ namespace ProjectV3
         {
 
         }
+
+        private void mainMenu_Click(object sender, EventArgs e)
+        {
+            TeacherNamee.ResetText();
+            this.Hide();
+            Forms.Frontpage.Show();
+        }
     }
 }

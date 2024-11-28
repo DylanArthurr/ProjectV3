@@ -22,20 +22,10 @@ namespace ProjectV3.User_Forms.Login_Forms
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
-
+            Environment.Exit(0);
         }
 
         private void LoginBttn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TeacherPass_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TeacherName_TextChanged(object sender, EventArgs e)
         {
             string filePath = "Teachers.txt";
 
@@ -84,6 +74,16 @@ namespace ProjectV3.User_Forms.Login_Forms
             Forms.MainWindow.Show();
         }
 
+        private void TeacherPass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TeacherName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
@@ -96,6 +96,14 @@ namespace ProjectV3.User_Forms.Login_Forms
                 }
                 return builder.ToString();
             }
+        }
+
+        private void mainMenu_Click(object sender, EventArgs e)
+        {
+            TeacherPassw.ResetText();
+            this.Hide();
+            Forms.Frontpage.Show();
+            
         }
     }
 }

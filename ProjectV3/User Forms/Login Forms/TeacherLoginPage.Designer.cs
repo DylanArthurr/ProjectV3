@@ -34,6 +34,7 @@
             LoginButton = new Button();
             TeacherPassw = new TextBox();
             TeacherNamee = new TextBox();
+            mainMenu = new Button();
             LoginMessage = new Label();
             SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             // QuitButton
             // 
             QuitButton.BackColor = Color.FromArgb(242, 226, 203);
-            QuitButton.Location = new Point(371, 343);
+            QuitButton.Location = new Point(362, 358);
             QuitButton.Name = "QuitButton";
             QuitButton.Size = new Size(73, 21);
             QuitButton.TabIndex = 6;
@@ -61,7 +62,7 @@
             // LoginButton
             // 
             LoginButton.BackColor = Color.FromArgb(242, 226, 203);
-            LoginButton.Location = new Point(342, 314);
+            LoginButton.Location = new Point(334, 302);
             LoginButton.Name = "LoginButton";
             LoginButton.Size = new Size(131, 23);
             LoginButton.TabIndex = 5;
@@ -75,7 +76,7 @@
             TeacherPassw.Font = new Font("Segoe UI", 18F);
             TeacherPassw.Location = new Point(293, 257);
             TeacherPassw.Name = "TeacherPassw";
-            TeacherPassw.Size = new Size(212, 39);
+            TeacherPassw.Size = new Size(209, 39);
             TeacherPassw.TabIndex = 8;
             // 
             // TeacherNamee
@@ -84,9 +85,20 @@
             TeacherNamee.Font = new Font("Segoe UI", 18F);
             TeacherNamee.Location = new Point(293, 212);
             TeacherNamee.Name = "TeacherNamee";
-            TeacherNamee.Size = new Size(212, 39);
+            TeacherNamee.Size = new Size(209, 39);
             TeacherNamee.TabIndex = 7;
             TeacherNamee.TextChanged += TeacherName_TextChanged;
+            // 
+            // mainMenu
+            // 
+            mainMenu.BackColor = Color.FromArgb(242, 226, 203);
+            mainMenu.Location = new Point(347, 331);
+            mainMenu.Name = "mainMenu";
+            mainMenu.Size = new Size(104, 21);
+            mainMenu.TabIndex = 15;
+            mainMenu.Text = "Main  Menu";
+            mainMenu.UseVisualStyleBackColor = false;
+            mainMenu.Click += mainMenu_Click;
             // 
             // TeacherLoginPage
             // 
@@ -95,6 +107,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(mainMenu);
             Controls.Add(TeacherPassw);
             Controls.Add(TeacherNamee);
             Controls.Add(QuitButton);
@@ -113,5 +126,6 @@
         private Button LoginButton;
         private TextBox TeacherPassw;
         private TextBox TeacherNamee;
+        private Button mainMenu;
     }
 }

@@ -61,6 +61,7 @@
             Tape.Size = new Size(559, 37);
             Tape.TabIndex = 4;
             Tape.Text = "";
+            Tape.TextChanged += Tape_TextChanged;
             // 
             // pictureBox1
             // 
