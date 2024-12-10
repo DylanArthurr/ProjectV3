@@ -96,6 +96,7 @@
             tape1.Name = "tape1";
             tape1.Size = new Size(25, 20);
             tape1.TabIndex = 7;
+            tape1.TextChanged += tape1_TextChanged;
             // 
             // tape2
             // 
@@ -103,6 +104,7 @@
             tape2.Name = "tape2";
             tape2.Size = new Size(25, 20);
             tape2.TabIndex = 8;
+            tape2.TextChanged += tape2_TextChanged;
             // 
             // tape3
             // 
@@ -110,6 +112,7 @@
             tape3.Name = "tape3";
             tape3.Size = new Size(25, 20);
             tape3.TabIndex = 9;
+            tape3.TextChanged += tape3_TextChanged;
             // 
             // tape4
             // 
@@ -117,6 +120,7 @@
             tape4.Name = "tape4";
             tape4.Size = new Size(25, 20);
             tape4.TabIndex = 10;
+            tape4.TextChanged += tape4_TextChanged;
             // 
             // tape6
             // 
@@ -124,6 +128,7 @@
             tape6.Name = "tape6";
             tape6.Size = new Size(25, 20);
             tape6.TabIndex = 11;
+            tape6.TextChanged += tape6_TextChanged;
             // 
             // tape5
             // 
@@ -131,6 +136,7 @@
             tape5.Name = "tape5";
             tape5.Size = new Size(25, 20);
             tape5.TabIndex = 11;
+            tape5.TextChanged += tape5_TextChanged;
             // 
             // tape7
             // 
@@ -138,6 +144,7 @@
             tape7.Name = "tape7";
             tape7.Size = new Size(25, 20);
             tape7.TabIndex = 12;
+            tape7.TextChanged += tape7_TextChanged;
             // 
             // tape8
             // 
@@ -161,6 +168,7 @@
             tape10.Name = "tape10";
             tape10.Size = new Size(25, 20);
             tape10.TabIndex = 15;
+            tape10.TextChanged += tape10_TextChanged;
             // 
             // tape11
             // 
@@ -168,6 +176,7 @@
             tape11.Name = "tape11";
             tape11.Size = new Size(25, 20);
             tape11.TabIndex = 16;
+            tape11.TextChanged += tape11_TextChanged;
             // 
             // tape12
             // 
@@ -175,6 +184,7 @@
             tape12.Name = "tape12";
             tape12.Size = new Size(25, 20);
             tape12.TabIndex = 17;
+            tape12.TextChanged += tape12_TextChanged;
             // 
             // tape13
             // 
@@ -182,6 +192,7 @@
             tape13.Name = "tape13";
             tape13.Size = new Size(25, 20);
             tape13.TabIndex = 18;
+            tape13.TextChanged += tape13_TextChanged;
             // 
             // tape14
             // 
@@ -189,6 +200,7 @@
             tape14.Name = "tape14";
             tape14.Size = new Size(25, 20);
             tape14.TabIndex = 19;
+            tape14.TextChanged += tape14_TextChanged;
             // 
             // moverightbttn
             // 
@@ -202,6 +214,7 @@
             moverightbttn.TabIndex = 20;
             moverightbttn.Text = "Move Right";
             moverightbttn.UseVisualStyleBackColor = false;
+            moverightbttn.Click += moverightbttn_Click;
             // 
             // cleartapebttn
             // 
@@ -215,6 +228,7 @@
             cleartapebttn.TabIndex = 21;
             cleartapebttn.Text = "Clear Tape";
             cleartapebttn.UseVisualStyleBackColor = false;
+            cleartapebttn.Click += cleartapebttn_Click;
             // 
             // moveleftbttn
             // 
@@ -228,6 +242,7 @@
             moveleftbttn.TabIndex = 22;
             moveleftbttn.Text = "Move Left";
             moveleftbttn.UseVisualStyleBackColor = false;
+            moveleftbttn.Click += moveleftbttn_Click;
             // 
             // stopbttn
             // 
@@ -241,6 +256,7 @@
             stopbttn.TabIndex = 23;
             stopbttn.Text = "Stop";
             stopbttn.UseVisualStyleBackColor = false;
+            stopbttn.Click += stopbttn_Click;
             // 
             // savealphabetbttn
             // 
@@ -254,6 +270,7 @@
             savealphabetbttn.TabIndex = 24;
             savealphabetbttn.Text = "Save Alphabet";
             savealphabetbttn.UseVisualStyleBackColor = false;
+            savealphabetbttn.Click += savealphabetbttn_Click;
             // 
             // stepbttn
             // 
@@ -267,6 +284,7 @@
             stepbttn.TabIndex = 25;
             stepbttn.Text = "Step";
             stepbttn.UseVisualStyleBackColor = false;
+            stepbttn.Click += stepbttn_Click;
             // 
             // runbttn
             // 
@@ -280,6 +298,7 @@
             runbttn.TabIndex = 26;
             runbttn.Text = "Run";
             runbttn.UseVisualStyleBackColor = false;
+            runbttn.Click += runbttn_Click;
             // 
             // currstatelabel
             // 
@@ -324,6 +343,7 @@
             currstatetextbox.Name = "currstatetextbox";
             currstatetextbox.Size = new Size(106, 20);
             currstatetextbox.TabIndex = 30;
+            currstatetextbox.TextChanged += currstatetextbox_TextChanged;
             // 
             // acceptingstatetextbox
             // 
@@ -332,6 +352,7 @@
             acceptingstatetextbox.Name = "acceptingstatetextbox";
             acceptingstatetextbox.Size = new Size(94, 20);
             acceptingstatetextbox.TabIndex = 31;
+            acceptingstatetextbox.TextChanged += acceptingstatetextbox_TextChanged;
             // 
             // alphabettextbox
             // 
@@ -340,6 +361,7 @@
             alphabettextbox.Name = "alphabettextbox";
             alphabettextbox.Size = new Size(146, 20);
             alphabettextbox.TabIndex = 32;
+            alphabettextbox.TextChanged += alphabettextbox_TextChanged;
             // 
             // savechangesbttn
             // 
@@ -351,6 +373,7 @@
             savechangesbttn.TabIndex = 33;
             savechangesbttn.Text = "Save Changes";
             savechangesbttn.UseVisualStyleBackColor = false;
+            savechangesbttn.Click += savechangesbttn_Click;
             // 
             // newinstructionbttn
             // 
@@ -362,6 +385,7 @@
             newinstructionbttn.TabIndex = 34;
             newinstructionbttn.Text = "Add New Instruction";
             newinstructionbttn.UseVisualStyleBackColor = false;
+            newinstructionbttn.Click += newinstructionbttn_Click;
             // 
             // MainForm
             // 
