@@ -89,6 +89,13 @@
             LogOutButton.Text = "Logout";
             LogOutButton.UseVisualStyleBackColor = false;
             LogOutButton.Click += LogOutButton_Click;
+            // Load FSM Button
+            Button loadFSMButton = new Button();
+            loadFSMButton.Text = "Load FSM Rules";
+            loadFSMButton.Location = new Point(20, 380);
+            loadFSMButton.Click += savechangesbttn_Click;
+            Controls.Add(loadFSMButton);
+
             // 
             // tape1
             // 
@@ -477,5 +484,7 @@
         private TextBox alphabettextbox;
         private Button savechangesbttn;
         private Button newinstructionbttn;
+
+
     }
 }
