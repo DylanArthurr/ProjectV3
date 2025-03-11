@@ -121,7 +121,7 @@
   <data name="RegisterButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABIAAAAOACAIAAADNbZ+DAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAA/7JJREFUeF7s/fV3XEnS7wufP+f+8sK955z7nIdmpqenp7un0e2229RmZmZmZlmy
+        vQAADr0BR/uQrQAA/7JJREFUeF7s/fV3XEnS7wufP+f+8sK955z7nIdmpqenp7un0e2229RmZmZmZlmy
         JIsZSyxZlmRhkciMAluW7J7n3PdveL8RkTsrKwtUArPW+qxauXNHUmQkxKb6b6+6Soa7SzXWoYBIjXXq
         nTHSFR5LTGOJaSyxKQSzi8fEiL9kuJOw4jVyNkBwudIprztLbbEAxQbWqQBWobFj1WeysEr5eLHapdED
         KgpaeMhIaGElGTdWthqrOe8Fq0rvBUtdGktMYzVh0rGKC4tVVeF1twsYMSXCcHcY9FkDnfDjpMclKC3x
@@ -18892,7 +18892,7 @@
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABIAAAAOACAIAAADNbZ+DAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAA/7JJREFUeF7s/fV3XEnS7wufP+f+8sK955z7nIdmpqenp7un0e2229RmZmZmZlmy
+        vQAADr0BR/uQrQAA/7JJREFUeF7s/fV3XEnS7wufP+f+8sK955z7nIdmpqenp7un0e2229RmZmZmZlmy
         JIsZSyxZlmRhkciMAluW7J7n3PdveL8RkTsrKwtUArPW+qxauXNHUmQkxKb6b6+6Soa7SzXWoYBIjXXq
         nTHSFR5LTGOJaSyxKQSzi8fEiL9kuJOw4jVyNkBwudIprztLbbEAxQbWqQBWobFj1WeysEr5eLHapdED
         KgpaeMhIaGElGTdWthqrOe8Fq0rvBUtdGktMYzVh0rGKC4tVVeF1twsYMSXCcHcY9FkDnfDjpMclKC3x

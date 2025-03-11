@@ -46,7 +46,6 @@
             StudentUserName.Name = "StudentUserName";
             StudentUserName.Size = new Size(209, 35);
             StudentUserName.TabIndex = 2;
-            StudentUserName.Text = "UserName";
             StudentUserName.TextChanged += UserName_TextChanged;
             // 
             // Password
@@ -55,9 +54,10 @@
             Password.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Password.Location = new Point(297, 257);
             Password.Name = "Password";
-            Password.PasswordChar = '*';
             Password.Size = new Size(209, 35);
             Password.TabIndex = 3;
+            Password.UseSystemPasswordChar = true;
+            Password.TextChanged += Password_TextChanged;
             // 
             // LoginMessage
             // 

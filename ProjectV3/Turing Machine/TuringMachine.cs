@@ -67,7 +67,7 @@ namespace MajorProject
             if (p == -1)
             {
                 MessageBox.Show("Simulation Completed");
-                return;
+                
             }
 
             GetTapeValues();

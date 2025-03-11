@@ -78,6 +78,8 @@
             TeacherPassw.Name = "TeacherPassw";
             TeacherPassw.Size = new Size(209, 39);
             TeacherPassw.TabIndex = 8;
+            TeacherPassw.UseSystemPasswordChar = true;
+            TeacherPassw.TextChanged += TeacherPassw_TextChanged;
             // 
             // TeacherNamee
             // 

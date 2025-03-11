@@ -102,6 +102,7 @@ namespace MajorProject
                 StudentLoginTextBox.Clear(); // Clear the username field for the user to try again
                 StudentLoginTextBox.Focus(); // Focus the username field again
             }
+            StudentLoginTextBox.ResetText();
             StudentLoginPassword.ResetText();
         }
 
@@ -132,6 +133,7 @@ namespace MajorProject
 
         private void mainMenu_Click(object sender, EventArgs e)
         {
+            StudentLoginTextBox.ResetText();
             StudentLoginPassword.ResetText();
             this.Hide();
             Forms.Frontpage.Show();

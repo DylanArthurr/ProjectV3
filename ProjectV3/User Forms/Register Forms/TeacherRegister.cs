@@ -68,6 +68,7 @@ namespace ProjectV3.User_Forms.Login_Forms
                     FWrite.WriteLine($"{TeacherPassw.Text},{password}");
                 }
             }
+            TeacherNa.ResetText();
             TeacherPassw.ResetText();
             // Hide the current form and show the main window
             this.Hide();
@@ -100,6 +101,7 @@ namespace ProjectV3.User_Forms.Login_Forms
 
         private void mainMenu_Click(object sender, EventArgs e)
         {
+            TeacherNa.ResetText();
             TeacherPassw.ResetText();
             this.Hide();
             Forms.Frontpage.Show();

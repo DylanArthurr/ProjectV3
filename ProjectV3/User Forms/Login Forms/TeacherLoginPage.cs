@@ -88,6 +88,7 @@ namespace ProjectV3
                 TeacherNamee.Focus(); // Focus the username field again
             }
             TeacherNamee.ResetText();
+            TeacherPassw.ResetText();
         }
         private string HashPassword(string password)
         {
@@ -121,8 +122,14 @@ namespace ProjectV3
         private void mainMenu_Click(object sender, EventArgs e)
         {
             TeacherNamee.ResetText();
+            TeacherPassw.ResetText();
             this.Hide();
             Forms.Frontpage.Show();
+        }
+
+        private void TeacherPassw_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

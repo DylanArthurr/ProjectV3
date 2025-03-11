@@ -83,6 +83,7 @@ namespace ProjectV3
                     FWrite.WriteLine($"{StudentUserName.Text},{password}");
                 }
             }
+            StudentUserName.ResetText();
             Password.ResetText();
             // Hide the current form and show the main window
             this.Hide();
@@ -105,9 +106,16 @@ namespace ProjectV3
 
         private void mainMenu_Click(object sender, EventArgs e)
         {
+            StudentUserName.ResetText();
+
             Password.ResetText();
             this.Hide();
             Forms.Frontpage.Show();
+        }
+
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

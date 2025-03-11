@@ -78,7 +78,6 @@
             StudentLoginTextBox.Name = "StudentLoginTextBox";
             StudentLoginTextBox.Size = new Size(209, 35);
             StudentLoginTextBox.TabIndex = 6;
-            StudentLoginTextBox.Text = "UserName";
             StudentLoginTextBox.TextChanged += StudentLoginTextBox_TextChanged;
             // 
             // StudentLoginPassword
@@ -89,7 +88,7 @@
             StudentLoginPassword.Name = "StudentLoginPassword";
             StudentLoginPassword.Size = new Size(209, 35);
             StudentLoginPassword.TabIndex = 7;
-            StudentLoginPassword.Text = "Password";
+            StudentLoginPassword.UseSystemPasswordChar = true;
             StudentLoginPassword.TextChanged += StudentLoginPassword_TextChanged;
             // 
             // mainMenu

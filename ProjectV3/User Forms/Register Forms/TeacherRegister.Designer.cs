@@ -56,6 +56,7 @@
             TeacherPassw.Name = "TeacherPassw";
             TeacherPassw.Size = new Size(212, 39);
             TeacherPassw.TabIndex = 9;
+            TeacherPassw.UseSystemPasswordChar = true;
             TeacherPassw.TextChanged += TeacherPass_TextChanged;
             // 
             // LoginBttn
@@ -65,7 +66,7 @@
             LoginBttn.Name = "LoginBttn";
             LoginBttn.Size = new Size(131, 23);
             LoginBttn.TabIndex = 10;
-            LoginBttn.Text = "Login";
+            LoginBttn.Text = "Accept";
             LoginBttn.UseVisualStyleBackColor = false;
             LoginBttn.Click += LoginBttn_Click;
             // 
