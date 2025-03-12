@@ -15,7 +15,6 @@ namespace MajorProject
             InitializeTapeValues();
         }
         // Loads FSM transitions from the FiniteStateForm into the Turing Machine.
-        // Loads FSM transitions from the FiniteStateForm into the Turing Machine.
         public void LoadFSMTransitionsIntoTuringMachine()
         {
             FSM.LoadTransitions(); // This method is public in FiniteStateForm
@@ -37,26 +36,39 @@ namespace MajorProject
         }
         private void GetTapeValues()
         {
+            int tapeStart = Machine.GetHeadPos() - tapevalues.Length / 2;  // Center around the head
+
             for (int i = 0; i < tapevalues.Length; i++)
             {
-                int x = Machine.GetHeadPos() - 7 + i;
-                tapevalues[i].Text = Machine.GetTapeValue(x);
+                int tapeIndex = tapeStart + i;  // Ensure we're reading the correct tape index
+
+                // If tape index is negative, force it to show '0' (prevents empty spaces)
+                tapevalues[i].Text = tapeIndex >= 0 ? Machine.GetTapeValue(tapeIndex) : "0";
             }
-            currstatetextbox.Text = Machine.GetCurrentState(); // Update current state textbox.
+
+            currstatetextbox.Text = Machine.GetCurrentState(); // ? Ensure current state is shown
         }
+
         private void UpdateTapeValues(object sender, EventArgs e)
         {
             for (int i = 0; i < tapevalues.Length; i++)
             {
-                int x = Machine.GetHeadPos() - 7 + i;
-                tapevalues[i].BackColor = Color.White;
-                Machine.SetTapeValue(tapevalues[i].Text, x);
+                int x = Machine.GetHeadPos() - 7 + i;  // Correctly map textbox to tape index
+
+                if (x < 0)
+                {
+                    Machine.SetTapeValue("0", x);  // Ensure negative indices have '0'
+                }
+                else
+                {
+                    tapevalues[i].BackColor = Color.White;
+                    Machine.SetTapeValue(tapevalues[i].Text, x);  // Correctly save user input
+                }
             }
 
-            // Debug output to ensure tape values are being correctly set
-            string tapeContent = string.Join("", tapevalues.Select(t => t.Text));
-            MessageBox.Show($"Tape after update: {tapeContent}");
+            GetTapeValues();  // Refresh UI display after updates
         }
+
 
 
         private void ExecuteInstruction()
@@ -119,9 +131,13 @@ namespace MajorProject
 
             public string GetTapeValue(int index)
             {
-                while (index >= tape.Count) tape.Add(' ');
-                return index >= 0 ? tape[index].ToString() : " ";
+                while (index >= tape.Count || index < 0)  // Fix: Ensure negatives are initialized
+                {
+                    tape.Insert(0, '0');  // Fix: Prepend '0' for negative indexes
+                }
+                return index >= 0 ? tape[index].ToString() : "0";  //Fix: Always return '0' if out of bounds
             }
+
 
             public void SetTapeValue(string value, int index)
             {
@@ -204,13 +220,21 @@ namespace MajorProject
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Machine.ClearTape();  // Clear any previous tape state
+            Machine.ClearTape();  // Ensure tape starts fresh
             Machine.SetCurrentState("start");
             Machine.SetAcceptState("halt");
             Machine.SetAlphabet("01 "); // Default alphabet
 
-            GetTapeValues(); // Display the cleared tape values for the user to modify
+            // Prepopulate ALL tape positions with '0' (including negative indices)
+            for (int i = -7; i < 14; i++)  // Fix: Start from -7 to cover all displayed cells
+            {
+                Machine.SetTapeValue("0", i);
+            }
+
+            Machine.SetHeadPos(0);  // Set head to first valid cell
+            GetTapeValues();  // Refresh tape values in UI CAUSING ERROR 
         }
+
 
 
 
