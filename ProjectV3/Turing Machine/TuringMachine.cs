@@ -52,7 +52,13 @@ namespace MajorProject
                 tapevalues[i].BackColor = Color.White;
                 Machine.SetTapeValue(tapevalues[i].Text, x);
             }
+
+            // Debug output to ensure tape values are being correctly set
+            string tapeContent = string.Join("", tapevalues.Select(t => t.Text));
+            MessageBox.Show($"Tape after update: {tapeContent}");
         }
+
+
         private void ExecuteInstruction()
         {
             int result = Machine.Execute();
@@ -67,8 +73,8 @@ namespace MajorProject
                 MessageBox.Show("Accepted State Reached!");
             }
         }
-        
-        
+
+
 
         // Event handler for the "Step" button.
         private void StepButton_Click(object sender, EventArgs e)
@@ -83,7 +89,7 @@ namespace MajorProject
         }
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Optional: Handle DataGridView cell clicks if needed.
+
         }
 
         // Single definition of ObjMachine (outside MainForm) so that its methods (including SetAlphabet) are available.
@@ -132,18 +138,24 @@ namespace MajorProject
 
             public int Execute()
             {
-                if (tapeHead < 0 || tapeHead >= tape.Count) return -1;
                 char currentSymbol = tape[tapeHead];
+                MessageBox.Show($"Executing Step | State: {currentState} | Tape Symbol: '{currentSymbol}'");
+
                 if (stateTable.TryGetValue((currentState, currentSymbol), out var transition))
                 {
                     (string newState, char newSymbol, int moveDirection) = transition;
                     tape[tapeHead] = newSymbol;
                     currentState = newState;
                     tapeHead += moveDirection;
+
+                    MessageBox.Show($"Transition Applied: Write '{newSymbol}', Move {moveDirection}, New State: {newState}");
                     return 0;
                 }
-                return -1;
+
+                MessageBox.Show("No valid transition found — halting.");
+                return -1;  // No matching transition
             }
+
 
             public void ClearTape()
             {
@@ -192,20 +204,14 @@ namespace MajorProject
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            Machine.ClearTape();  // Clear any previous tape state
+            Machine.SetCurrentState("start");
+            Machine.SetAcceptState("halt");
             Machine.SetAlphabet("01 "); // Default alphabet
-            alphabettextbox.Text = "01 ";
-            Machine.SetCurrentState("start"); // Ensure starting state is "start"
 
-            // Initialize tape with zeros
-            for (int i = 0; i < 14; i++)
-            {
-                Machine.SetTapeValue("0", i);
-            }
-
-            Machine.SetHeadPos(7); // Start in the middle of the tape
-            currstatetextbox.Text = "start";
-            GetTapeValues();
+            GetTapeValues(); // Display the cleared tape values for the user to modify
         }
+
 
 
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -283,7 +289,7 @@ namespace MajorProject
         }
         private void cleartapebttn_Click(object sender, EventArgs e)
         {
-
+            Machine.ClearTape();
         }
         private void moveleftbttn_Click(object sender, EventArgs e)
         {
@@ -327,7 +333,21 @@ namespace MajorProject
         }
         private void savealphabetbttn_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void SetHeadPositionButton_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(headPositionTextbox.Text, out int newHeadPos))
+            {
+                Machine.SetHeadPos(newHeadPos);
+                GetTapeValues();  // Refresh tape values after head position change
+                MessageBox.Show($"Head position set to {newHeadPos}");
+            }
+            else
+            {
+                MessageBox.Show("Invalid head position. Please enter a number.");
+            }
         }
     }
 }

@@ -33,36 +33,54 @@
             StartState = new DataGridViewTextBoxColumn();
             Output = new DataGridViewTextBoxColumn();
             Movement = new DataGridViewComboBoxColumn();
-            // Set up Movement column properties
-            Movement.HeaderText = "Movement";
-            Movement.Name = "Movement"; // This must exactly match the lookup in code
-            Movement.Items.AddRange(new object[] { ">", "<", "-" });
-            Movement.MaxDropDownItems = 3;
-            Movement.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
-            Movement.DisplayStyleForCurrentCellOnly = false;
             EndState = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(168, 147, 118);
+            dataGridView1.BackgroundColor = Color.FromArgb(168, 147, 118);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Input, StartState, Output, Movement, EndState });
-            dataGridView1.GridColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            dataGridView1.Location = new System.Drawing.Point(-7, 0);
+            dataGridView1.GridColor = Color.FromArgb(64, 64, 64);
+            dataGridView1.Location = new Point(-7, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ScrollBars = ScrollBars.Vertical;
-            dataGridView1.Size = new System.Drawing.Size(543, 400);
+            dataGridView1.Size = new Size(543, 400);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // Input
+            // 
+            Input.Name = "Input";
+            // 
+            // StartState
+            // 
+            StartState.Name = "StartState";
+            // 
+            // Output
+            // 
+            Output.Name = "Output";
+            // 
+            // Movement
+            // 
+            Movement.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
+            Movement.HeaderText = "Movement";
+            Movement.Items.AddRange(new object[] { ">", "<", "-" });
+            Movement.MaxDropDownItems = 3;
+            Movement.Name = "Movement";
+            // 
+            // EndState
+            // 
+            EndState.Name = "EndState";
+            // 
             // FiniteStateForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(548, 399);
+            ClientSize = new Size(548, 399);
             Controls.Add(dataGridView1);
             Name = "FiniteStateForm";
             Text = "Finite State Table";

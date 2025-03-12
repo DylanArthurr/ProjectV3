@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             FiniteStateButton = new Button();
             LogOutButton = new Button();
@@ -45,9 +46,7 @@
             tape12 = new TextBox();
             tape13 = new TextBox();
             tape14 = new TextBox();
-            moverightbttn = new Button();
             cleartapebttn = new Button();
-            moveleftbttn = new Button();
             stopbttn = new Button();
             savealphabetbttn = new Button();
             stepbttn = new Button();
@@ -60,6 +59,10 @@
             alphabettextbox = new TextBox();
             savechangesbttn = new Button();
             newinstructionbttn = new Button();
+            loadFSMButton = new Button();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            headPositionTextbox = new TextBox();
+            SetHeadPositionButton = new Button();
             SuspendLayout();
             // 
             // FiniteStateButton
@@ -89,13 +92,6 @@
             LogOutButton.Text = "Logout";
             LogOutButton.UseVisualStyleBackColor = false;
             LogOutButton.Click += LogOutButton_Click;
-            // Load FSM Button
-            Button loadFSMButton = new Button();
-            loadFSMButton.Text = "Load FSM Rules";
-            loadFSMButton.Location = new Point(20, 380);
-            loadFSMButton.Click += savechangesbttn_Click;
-            Controls.Add(loadFSMButton);
-
             // 
             // tape1
             // 
@@ -209,47 +205,19 @@
             tape14.TabIndex = 19;
             tape14.TextChanged += tape14_TextChanged;
             // 
-            // moverightbttn
-            // 
-            moverightbttn.BackColor = Color.FromArgb(168, 147, 118);
-            moverightbttn.FlatStyle = FlatStyle.Popup;
-            moverightbttn.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
-            moverightbttn.ForeColor = Color.Transparent;
-            moverightbttn.Location = new Point(50, 161);
-            moverightbttn.Name = "moverightbttn";
-            moverightbttn.Size = new Size(158, 34);
-            moverightbttn.TabIndex = 20;
-            moverightbttn.Text = "Move Right";
-            moverightbttn.UseVisualStyleBackColor = false;
-            moverightbttn.Click += moverightbttn_Click;
-            // 
             // cleartapebttn
             // 
             cleartapebttn.BackColor = Color.FromArgb(168, 147, 118);
             cleartapebttn.FlatStyle = FlatStyle.Popup;
             cleartapebttn.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
             cleartapebttn.ForeColor = Color.Transparent;
-            cleartapebttn.Location = new Point(214, 161);
+            cleartapebttn.Location = new Point(208, 152);
             cleartapebttn.Name = "cleartapebttn";
             cleartapebttn.Size = new Size(165, 34);
             cleartapebttn.TabIndex = 21;
             cleartapebttn.Text = "Clear Tape";
             cleartapebttn.UseVisualStyleBackColor = false;
             cleartapebttn.Click += cleartapebttn_Click;
-            // 
-            // moveleftbttn
-            // 
-            moveleftbttn.BackColor = Color.FromArgb(168, 147, 118);
-            moveleftbttn.FlatStyle = FlatStyle.Popup;
-            moveleftbttn.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
-            moveleftbttn.ForeColor = Color.Transparent;
-            moveleftbttn.Location = new Point(385, 161);
-            moveleftbttn.Name = "moveleftbttn";
-            moveleftbttn.Size = new Size(158, 34);
-            moveleftbttn.TabIndex = 22;
-            moveleftbttn.Text = "Move Left";
-            moveleftbttn.UseVisualStyleBackColor = false;
-            moveleftbttn.Click += moveleftbttn_Click;
             // 
             // stopbttn
             // 
@@ -386,13 +354,47 @@
             // 
             newinstructionbttn.BackColor = Color.FromArgb(168, 147, 118);
             newinstructionbttn.FlatStyle = FlatStyle.Popup;
-            newinstructionbttn.Location = new Point(418, 220);
+            newinstructionbttn.Location = new Point(416, 222);
             newinstructionbttn.Name = "newinstructionbttn";
             newinstructionbttn.Size = new Size(127, 19);
             newinstructionbttn.TabIndex = 34;
             newinstructionbttn.Text = "Add New Instruction";
             newinstructionbttn.UseVisualStyleBackColor = false;
             newinstructionbttn.Click += newinstructionbttn_Click;
+            // 
+            // loadFSMButton
+            // 
+            loadFSMButton.Location = new Point(23, 375);
+            loadFSMButton.Name = "loadFSMButton";
+            loadFSMButton.Size = new Size(75, 23);
+            loadFSMButton.TabIndex = 0;
+            loadFSMButton.Text = "Load FSM Rules";
+            loadFSMButton.Click += savechangesbttn_Click;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // headPositionTextbox
+            // 
+            headPositionTextbox.BackColor = Color.FromArgb(168, 147, 118);
+            headPositionTextbox.Location = new Point(449, 268);
+            headPositionTextbox.Name = "headPositionTextbox";
+            headPositionTextbox.Size = new Size(94, 20);
+            headPositionTextbox.TabIndex = 36;
+            // 
+            // SetHeadPositionButton
+            // 
+            SetHeadPositionButton.BackColor = Color.FromArgb(168, 147, 118);
+            SetHeadPositionButton.FlatStyle = FlatStyle.Popup;
+            SetHeadPositionButton.Location = new Point(316, 269);
+            SetHeadPositionButton.Name = "SetHeadPositionButton";
+            SetHeadPositionButton.Size = new Size(127, 19);
+            SetHeadPositionButton.TabIndex = 37;
+            SetHeadPositionButton.Text = "Set Head Pos";
+            SetHeadPositionButton.UseVisualStyleBackColor = false;
+            SetHeadPositionButton.Click += SetHeadPositionButton_Click;
             // 
             // MainForm
             // 
@@ -402,6 +404,9 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(597, 390);
+            Controls.Add(SetHeadPositionButton);
+            Controls.Add(headPositionTextbox);
+            Controls.Add(loadFSMButton);
             Controls.Add(newinstructionbttn);
             Controls.Add(savechangesbttn);
             Controls.Add(alphabettextbox);
@@ -414,9 +419,7 @@
             Controls.Add(stepbttn);
             Controls.Add(savealphabetbttn);
             Controls.Add(stopbttn);
-            Controls.Add(moveleftbttn);
             Controls.Add(cleartapebttn);
-            Controls.Add(moverightbttn);
             Controls.Add(tape14);
             Controls.Add(tape13);
             Controls.Add(tape12);
@@ -453,7 +456,6 @@
         private DataGridViewComboBoxColumn Movement;
         private DataGridViewTextBoxColumn EndState;
         private Panel panel1;
-        private Button moverightbttn;
         private Button FiniteStateButton;
         private Button LogOutButton;
         private TextBox tape1;
@@ -471,7 +473,6 @@
         private TextBox tape13;
         private TextBox tape14;
         private Button cleartapebttn;
-        private Button moveleftbttn;
         private Button stopbttn;
         private Button savealphabetbttn;
         private Button stepbttn;
@@ -484,7 +485,9 @@
         private TextBox alphabettextbox;
         private Button savechangesbttn;
         private Button newinstructionbttn;
-
-
+        private Button loadFSMButton;
+        private ContextMenuStrip contextMenuStrip1;
+        private TextBox headPositionTextbox;
+        private Button SetHeadPositionButton;
     }
 }
