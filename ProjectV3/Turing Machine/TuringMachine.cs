@@ -29,10 +29,10 @@ namespace MajorProject
                 tape8, tape9, tape10, tape11, tape12, tape13, tape14
             };
 
-            foreach (var textBox in tapevalues)
+            /*foreach (var textBox in tapevalues)
             {
                 textBox.Leave += UpdateTapeValues;
-            }
+            }*/
         }
         private void GetTapeValues()
         {
@@ -42,8 +42,7 @@ namespace MajorProject
             {
                 int tapeIndex = tapeStart + i;  // Ensure we're reading the correct tape index
 
-                // If tape index is negative, force it to show '0' (prevents empty spaces)
-                tapevalues[i].Text = tapeIndex >= 0 ? Machine.GetTapeValue(tapeIndex) : "0";
+
             }
 
             currstatetextbox.Text = Machine.GetCurrentState(); // ? Ensure current state is shown
@@ -51,7 +50,7 @@ namespace MajorProject
 
         private void UpdateTapeValues(object sender, EventArgs e)
         {
-            for (int i = 0; i < tapevalues.Length; i++)
+            for (int i = -7; i < tapevalues.Length; i++)
             {
                 int x = Machine.GetHeadPos() - 7 + i;  // Correctly map textbox to tape index
 
