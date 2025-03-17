@@ -36,17 +36,17 @@ namespace MajorProject
         }
         private void GetTapeValues()
         {
-            int tapeStart = Machine.GetHeadPos() - tapevalues.Length / 2;  // Center around the head
+            int tapeStart = Machine.GetHeadPos() - tapevalues.Length / 2;
 
             for (int i = 0; i < tapevalues.Length; i++)
             {
-                int tapeIndex = tapeStart + i;  // Ensure we're reading the correct tape index
-
-
+                int tapeIndex = tapeStart + i;
+                tapevalues[i].Text = Machine.GetTapeValue(tapeIndex); // Ensure UI updates
             }
 
-            currstatetextbox.Text = Machine.GetCurrentState(); // ? Ensure current state is shown
+            currstatetextbox.Text = Machine.GetCurrentState(); // Update current state display
         }
+
 
         private void UpdateTapeValues(object sender, EventArgs e)
         {
@@ -73,31 +73,27 @@ namespace MajorProject
         private void ExecuteInstruction()
         {
             int result = Machine.Execute();
+
             if (result == -1)
             {
                 MessageBox.Show("Simulation Completed");
             }
-            GetTapeValues();
 
-            if (Machine.GetCurrentState() == Machine.GetAcceptState())
-            {
-                MessageBox.Show("Accepted State Reached!");
-            }
+            GetTapeValues(); // Refresh UI display
+            MessageBox.Show($"Head Position: {Machine.GetHeadPos()}, Tape: {string.Join("", Machine.GetTapeSnapshot())}");
         }
 
 
 
-        // Event handler for the "Step" button.
+
+
         private void StepButton_Click(object sender, EventArgs e)
         {
-
-
             ExecuteInstruction();
-            foreach (var transition in FSM.Transitions)
-            {
-                MessageBox.Show($"From {transition.Key.Item1} on {transition.Key.Item2} ? To {transition.Value.Item2}, Write {transition.Value.Item1}, Move {transition.Value.Item3}");
-            }
+            GetTapeValues();  // Ensure the UI updates after every step
+            this.Refresh(); // Force UI redraw
         }
+
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -113,6 +109,11 @@ namespace MajorProject
             private string currentState = "start";
             private string acceptState = "accept";
             private HashSet<char> alphabet = new HashSet<char>();
+
+            public string GetTapeSnapshot()
+            {
+                return new string(tape.ToArray());
+            }
 
             public string GetCurrentState() => currentState;
             public string GetAcceptState() => acceptState;
@@ -130,12 +131,17 @@ namespace MajorProject
 
             public string GetTapeValue(int index)
             {
-                while (index >= tape.Count || index < 0)  // Fix: Ensure negatives are initialized
+                if (index < 0)
+                    return "0";  // Return default value for negative indices
+
+                // Ensure the tape list is long enough
+                while (index >= tape.Count)
                 {
-                    tape.Insert(0, '0');  // Fix: Prepend '0' for negative indexes
+                    tape.Add('0');
                 }
-                return index >= 0 ? tape[index].ToString() : "0";  //Fix: Always return '0' if out of bounds
+                return tape[index].ToString();
             }
+
 
 
             public void SetTapeValue(string value, int index)
@@ -154,22 +160,20 @@ namespace MajorProject
             public int Execute()
             {
                 char currentSymbol = tape[tapeHead];
-                MessageBox.Show($"Executing Step | State: {currentState} | Tape Symbol: '{currentSymbol}'");
 
                 if (stateTable.TryGetValue((currentState, currentSymbol), out var transition))
                 {
                     (string newState, char newSymbol, int moveDirection) = transition;
-                    tape[tapeHead] = newSymbol;
+                    tape[tapeHead] = newSymbol;  // Ensure the new symbol is written
                     currentState = newState;
-                    tapeHead += moveDirection;
+                    tapeHead += moveDirection;  // Move the head
 
-                    MessageBox.Show($"Transition Applied: Write '{newSymbol}', Move {moveDirection}, New State: {newState}");
                     return 0;
                 }
 
-                MessageBox.Show("No valid transition found — halting.");
-                return -1;  // No matching transition
+                return -1;  // No valid transition, halt the machine
             }
+
 
 
             public void ClearTape()
